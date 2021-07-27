@@ -57,4 +57,19 @@ describe('Calculator', () => {
     expect(runningTotal.text()).toEqual('15');
   })
 
+  it('should divide 21 by 7 and get 3', () => {
+    const button2 = container.find("#number2");
+    const button1 = container.find("#number1");
+    const button7 = container.find("#number7");
+    const divideOperator = container.find("#operator-divide");
+    const equalsOperator = container.find("#operator-equals");
+    const runningTotal = container.find("#running-total");
+    button2.simulate('click');
+    button1.simulate('click');
+    divideOperator.simulate('click');
+    button7.simulate('click');
+    equalsOperator.simulate('click');
+    expect(runningTotal.text()).toEqual('3');
+  })
+
 })
