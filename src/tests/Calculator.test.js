@@ -110,12 +110,11 @@ describe('Calculator', () => {
     button9.simulate('click');
     addOperator.simulate('click');
     button5.simulate('click');
-    equalsOperator.simulate('click');
     addOperator.simulate('click');
     button9.simulate('click');
     clearButton.simulate('click');
     expect(runningTotal.text()).toEqual('0');
-    addOperator.simulate('click');
+    equalsOperator.simulate('click');
     expect(runningTotal.text()).toEqual('14');
   })
 
