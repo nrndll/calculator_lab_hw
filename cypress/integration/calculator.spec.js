@@ -26,11 +26,45 @@ describe("Calculator", () => {
     cy.get(".display").should('contain', '37');
   })
 
-  it('should have negative numbers', () => {
+  it('should handle negative numbers', () => {
     cy.get("#number3").click();
     cy.get("#operator-subtract").click();
     cy.get("#number9").click();
     cy.get("#operator-equals").click();
     cy.get(".display").should('contain', '-6');
   })
+
+  it('should handle decimal numbers', () => {
+    cy.get("#number2").click();
+    cy.get("#decimal").click();
+    cy.get("#number2").click();
+    cy.get("#operator-subtract").click();
+    cy.get("#number1").click();
+    cy.get("#decimal").click();
+    cy.get("#number1").click();
+    cy.get("#operator-equals").click();
+    cy.get(".display").should('contain', '1.1');
+  })
+
+  it('should handle large numbers', () => {
+    cy.get("#number9").click();
+    cy.get("#number9").click();
+    cy.get("#number9").click();
+    cy.get("#number9").click();
+    cy.get("#operator-multiply").click();
+    cy.get("#number8").click();
+    cy.get("#number8").click();
+    cy.get("#number8").click();
+    cy.get("#operator-equals").click();
+    cy.get(".display").should('contain', '8879112');
+  })
+
+  it('should return an error when dividing by 0', () => {
+    cy.get("#number2").click();
+    cy.get("#operator-divide").click();
+    cy.get("#number0").click();
+    cy.get("#operator-equals").click();
+    cy.get(".display").should('contain', 'cannot divide by 0');
+  })
+
 })
